@@ -1,0 +1,1 @@
+/usr/bin/c++   -fopenmp    -rdynamic CMakeFiles/pi_Inegral.dir/pi_Integral.cxx.o  -o pi_Inegral 

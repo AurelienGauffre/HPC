@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/e/etournel/Bureau/HPC/Practical1/pi_Integral.cxx
+iostream
+-
+cmath
+-
+chrono
+-
+omp.h
+/home/e/etournel/Bureau/HPC/Practical1/omp.h
+

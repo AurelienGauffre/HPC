@@ -1,0 +1,1 @@
+/usr/bin/c++   -fopenmp    -rdynamic CMakeFiles/mandel.dir/mandel.cxx.o  -o mandel 
