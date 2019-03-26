@@ -50,7 +50,7 @@ int main()
   std::cout<<"Area of Mandlebrot set :" << area <<" +/-" << error <<std::endl;
   std::cout<<"Correct answer should be around 1.510659" <<std::endl;
 
-  return EXIT_SUCCESS;
+  return 0;
 }
 
   /*!
@@ -79,4 +79,3 @@ void testpoint(void)
     }
   }
 }
-

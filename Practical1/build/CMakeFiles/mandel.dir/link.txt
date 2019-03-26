@@ -1,1 +1,1 @@
-/usr/bin/c++   -fopenmp    -rdynamic CMakeFiles/mandel.dir/mandel.cxx.o  -o mandel 
+/usr/bin/c++    -fopenmp -std=c++11    CMakeFiles/mandel.dir/mandel.cxx.o  -o mandel -rdynamic 

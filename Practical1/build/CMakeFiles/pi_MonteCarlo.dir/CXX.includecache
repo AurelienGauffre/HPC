@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/e/etournel/Bureau/HPC/Practical1/pi_MonteCarlo.cxx
+/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/pi_MonteCarlo.cxx
 iostream
 -
 cmath

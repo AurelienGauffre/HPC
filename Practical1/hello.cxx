@@ -7,16 +7,20 @@ export OMP_NUM_THREADS = 8
  */
 #include "omp.h"
 #include <iostream>
-
+#include <chrono>
 int main ()
 {
   int a = 0 ;
+
+
+  for(int i = 0; i<3;i++)
+  {
   #pragma omp parallel
   {
+    std::cout<<omp_get_thread_num()<<std::endl;
 
-  //std::cout << a<< std::endl ;
-  std::cout<<"Hello World!"<<std::endl;
-  std::cout<< omp_get_thread_num()<<std::endl;
   }
-  return EXIT_SUCCESS;
+  }
+  std::cout<<omp_get_num_threads()<<std::endl;
+  return 0;
 }

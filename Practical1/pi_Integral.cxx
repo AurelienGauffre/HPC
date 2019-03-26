@@ -10,12 +10,13 @@
 // Mesure time
 #include <chrono>
 #include "omp.h"
-
+using namespace std;
 int main ()
+
 {
-  int nb_thread= 8;
+  int const nb_thread= 8;
   // Number of integration interval
-  int num_steps = 10000;
+  int num_steps = 100000;
   // Evaluation point
   double x;
   // Approximate value of pi
@@ -25,32 +26,51 @@ int main ()
   // Integration step
   double step = 1.0/(double) num_steps;
 
-  auto start = std::chrono::high_resolution_clock::now();
-  for (int i=1;i<= num_steps/nb_thread; i++)
-  {
-    #pragma omp parallel
-    {
-      std::cout<<omp_get_thread_num()<<std::endl;
-    sum = sum + 4.0/(1.0+(pow((8*i+omp_get_thread_num()-0.5)*step,2)));
-    }
+  double xtab[nb_thread] ;
+ auto start = std::chrono::high_resolution_clock::now();
+
+//   for (int i=1;i<= num_steps/nb_thread; i++)
+//   {
+//     #pragma omp parallel
+//     {
+//       int nt=omp_get_thread_num();
+//       xtab[nt]=4.0/(1.0+ ((num_steps/nb_thread*nt+i-0.5)*step)*(num_steps/nb_thread*nt+i-0.5)*step);
+//
+//     }
+//
+//     for(int j = 0; j<8;j++)
+//     {
+//       sum = sum + xtab[j];
+//     }
+// }
+#pragma omp for
+for (int i=1;i<= num_steps; i++)
+{
+
+    int nt=omp_get_thread_num();
+    xtab[nt]+=(double)(4.0/(1.0+ ((i-0.5)*step)*(i-0.5)*step));
 
 
 }
+for(int j = 0; j<8;j++)
+{
+  sum = sum + xtab[j];
+}
 
-    // for (int i=1;i<= num_steps; i++)
-    // {
-    // x = (i-0.5)*step;
-    // sum = sum + 4.0/(1.0+x*x);
-    //
-    // }
-  auto stop = std::chrono::high_resolution_clock::now();
+    for (int i=1;i<= num_steps; i++)
+    {
+    x = (i-0.5)*step;
+    sum = sum + 4.0/(1.0+x*x);
+
+    }
+ auto stop = std::chrono::high_resolution_clock::now();
 
   pi = step * sum;
-  auto elapsed =  std::chrono::duration<double>(stop-start).count();
+ auto elapsed =  std::chrono::duration<double>(stop-start).count();
   std::cout << "The value of PI after "<< num_steps << " steps is";
   std::cout << pi << " with error ";
-  std::cout << fabs(pi - M_PI)<< " and was obtained in ";
-  std::cout << elapsed << " seconds."<<std::endl;
+  std::cout << fabs(pi/2 - M_PI)<< " and was obtained in ";
+ std::cout << elapsed << " seconds."<<std::endl;
 
-  return EXIT_SUCCESS;
+  return 0;
 }
