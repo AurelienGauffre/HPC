@@ -1,7 +1,7 @@
-/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles/max.dir
-/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles/hello.dir
-/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles/pi_Inegral.dir
-/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles/pi_MonteCarlo.dir
-/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles/mandel.dir
+/home/a/anglac/Documents/HPC/HPC/Practical1/build/CMakeFiles/rebuild_cache.dir
+/home/a/anglac/Documents/HPC/HPC/Practical1/build/CMakeFiles/pi_Inegral.dir
+/home/a/anglac/Documents/HPC/HPC/Practical1/build/CMakeFiles/hello.dir
+/home/a/anglac/Documents/HPC/HPC/Practical1/build/CMakeFiles/pi_MonteCarlo.dir
+/home/a/anglac/Documents/HPC/HPC/Practical1/build/CMakeFiles/mandel.dir
+/home/a/anglac/Documents/HPC/HPC/Practical1/build/CMakeFiles/max.dir
+/home/a/anglac/Documents/HPC/HPC/Practical1/build/CMakeFiles/edit_cache.dir
