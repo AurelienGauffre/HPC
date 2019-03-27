@@ -69,7 +69,7 @@ for(int j = 0; j<8;j++)
  auto elapsed =  std::chrono::duration<double>(stop-start).count();
   std::cout << "The value of PI after "<< num_steps << " steps is";
   std::cout << pi << " with error ";
-  std::cout << fabs(pi/2 - M_PI)<< " and was obtained in ";
+  std::cout << fabs(pi - M_PI)<< " and was obtained in ";
  std::cout << elapsed << " seconds."<<std::endl;
 
   return 0;

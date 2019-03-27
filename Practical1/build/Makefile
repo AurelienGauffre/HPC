@@ -137,17 +137,17 @@ hello/fast:
 .PHONY : hello/fast
 
 #=============================================================================
-# Target rules for targets named pi_Inegral
+# Target rules for targets named pi_Integral
 
 # Build rule for target.
-pi_Inegral: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pi_Inegral
-.PHONY : pi_Inegral
+pi_Integral: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pi_Integral
+.PHONY : pi_Integral
 
 # fast build rule for target.
-pi_Inegral/fast:
-	$(MAKE) -f CMakeFiles/pi_Inegral.dir/build.make CMakeFiles/pi_Inegral.dir/build
-.PHONY : pi_Inegral/fast
+pi_Integral/fast:
+	$(MAKE) -f CMakeFiles/pi_Integral.dir/build.make CMakeFiles/pi_Integral.dir/build
+.PHONY : pi_Integral/fast
 
 #=============================================================================
 # Target rules for targets named pi_MonteCarlo
@@ -262,7 +262,7 @@ pi_Integral.o: pi_Integral.cxx.o
 
 # target to build an object file
 pi_Integral.cxx.o:
-	$(MAKE) -f CMakeFiles/pi_Inegral.dir/build.make CMakeFiles/pi_Inegral.dir/pi_Integral.cxx.o
+	$(MAKE) -f CMakeFiles/pi_Integral.dir/build.make CMakeFiles/pi_Integral.dir/pi_Integral.cxx.o
 .PHONY : pi_Integral.cxx.o
 
 pi_Integral.i: pi_Integral.cxx.i
@@ -271,7 +271,7 @@ pi_Integral.i: pi_Integral.cxx.i
 
 # target to preprocess a source file
 pi_Integral.cxx.i:
-	$(MAKE) -f CMakeFiles/pi_Inegral.dir/build.make CMakeFiles/pi_Inegral.dir/pi_Integral.cxx.i
+	$(MAKE) -f CMakeFiles/pi_Integral.dir/build.make CMakeFiles/pi_Integral.dir/pi_Integral.cxx.i
 .PHONY : pi_Integral.cxx.i
 
 pi_Integral.s: pi_Integral.cxx.s
@@ -280,7 +280,7 @@ pi_Integral.s: pi_Integral.cxx.s
 
 # target to generate assembly for a file
 pi_Integral.cxx.s:
-	$(MAKE) -f CMakeFiles/pi_Inegral.dir/build.make CMakeFiles/pi_Inegral.dir/pi_Integral.cxx.s
+	$(MAKE) -f CMakeFiles/pi_Integral.dir/build.make CMakeFiles/pi_Integral.dir/pi_Integral.cxx.s
 .PHONY : pi_Integral.cxx.s
 
 pi_MonteCarlo.o: pi_MonteCarlo.cxx.o
@@ -320,7 +320,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... max"
 	@echo "... hello"
-	@echo "... pi_Inegral"
+	@echo "... pi_Integral"
 	@echo "... pi_MonteCarlo"
 	@echo "... mandel"
 	@echo "... hello.o"

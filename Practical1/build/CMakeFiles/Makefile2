@@ -134,39 +134,39 @@ clean: CMakeFiles/hello.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/pi_Inegral.dir
+# Target rules for target CMakeFiles/pi_Integral.dir
 
 # All Build rule for target.
-CMakeFiles/pi_Inegral.dir/all:
-	$(MAKE) -f CMakeFiles/pi_Inegral.dir/build.make CMakeFiles/pi_Inegral.dir/depend
-	$(MAKE) -f CMakeFiles/pi_Inegral.dir/build.make CMakeFiles/pi_Inegral.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles --progress-num=7,8 "Built target pi_Inegral"
-.PHONY : CMakeFiles/pi_Inegral.dir/all
+CMakeFiles/pi_Integral.dir/all:
+	$(MAKE) -f CMakeFiles/pi_Integral.dir/build.make CMakeFiles/pi_Integral.dir/depend
+	$(MAKE) -f CMakeFiles/pi_Integral.dir/build.make CMakeFiles/pi_Integral.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles --progress-num=7,8 "Built target pi_Integral"
+.PHONY : CMakeFiles/pi_Integral.dir/all
 
 # Include target in all.
-all: CMakeFiles/pi_Inegral.dir/all
+all: CMakeFiles/pi_Integral.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/pi_Inegral.dir/rule: cmake_check_build_system
+CMakeFiles/pi_Integral.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pi_Inegral.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pi_Integral.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/build/CMakeFiles 0
-.PHONY : CMakeFiles/pi_Inegral.dir/rule
+.PHONY : CMakeFiles/pi_Integral.dir/rule
 
 # Convenience name for target.
-pi_Inegral: CMakeFiles/pi_Inegral.dir/rule
+pi_Integral: CMakeFiles/pi_Integral.dir/rule
 
-.PHONY : pi_Inegral
-
-# clean rule for target.
-CMakeFiles/pi_Inegral.dir/clean:
-	$(MAKE) -f CMakeFiles/pi_Inegral.dir/build.make CMakeFiles/pi_Inegral.dir/clean
-.PHONY : CMakeFiles/pi_Inegral.dir/clean
+.PHONY : pi_Integral
 
 # clean rule for target.
-clean: CMakeFiles/pi_Inegral.dir/clean
+CMakeFiles/pi_Integral.dir/clean:
+	$(MAKE) -f CMakeFiles/pi_Integral.dir/build.make CMakeFiles/pi_Integral.dir/clean
+.PHONY : CMakeFiles/pi_Integral.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/pi_Integral.dir/clean
 
 .PHONY : clean
 

@@ -15,7 +15,7 @@ endif (CXX)
 
 # Compile the various executable
 add_executable(hello hello.cxx)
-add_executable(pi_Inegral pi_Integral.cxx)
+add_executable(pi_Integral pi_Integral.cxx)
 add_executable(pi_MonteCarlo pi_MonteCarlo.cxx)
 add_executable(mandel mandel.cxx)
 add_executable(max max.cxx)

@@ -47,7 +47,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/max.dir/DependInfo.cmake"
   "CMakeFiles/hello.dir/DependInfo.cmake"
-  "CMakeFiles/pi_Inegral.dir/DependInfo.cmake"
+  "CMakeFiles/pi_Integral.dir/DependInfo.cmake"
   "CMakeFiles/pi_MonteCarlo.dir/DependInfo.cmake"
   "CMakeFiles/mandel.dir/DependInfo.cmake"
   )
