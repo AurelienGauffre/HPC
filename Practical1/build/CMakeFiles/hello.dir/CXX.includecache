@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/hello.cxx
+/home/a/anglac/Documents/HPC/HPC/Practical1/hello.cxx
 omp.h
-/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical1/omp.h
+/home/a/anglac/Documents/HPC/HPC/Practical1/omp.h
 iostream
 -
 chrono
