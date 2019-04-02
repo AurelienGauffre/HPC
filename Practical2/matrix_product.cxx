@@ -56,7 +56,7 @@ MatrixXd matrix_product_parallel(MatrixXd A, MatrixXd B, int n){
   int nb_blocks = 4;
   int m = n/nb_blocks;
   MatrixXd C = MatrixXd::Zero(n,n);
-  #pragma omp parallel for collapse(2)
+  #pragma omp parallel for 
   for(int i=0; i<nb_blocks; i++) {
     for(int j=0; j<nb_blocks; j++) {
       MatrixXd sum = MatrixXd::Zero(m,m);

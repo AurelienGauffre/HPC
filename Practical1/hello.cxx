@@ -25,4 +25,7 @@ int main ()
   }
   std::cout<<omp_get_num_threads()<<std::endl; //
   return 0;
+
+
+  
 }

@@ -15,10 +15,27 @@ end.
 
 
 ➤ #pragma omp barrier :  wait for all the thread to have finished to continue, synchronization, must be encountered by all threads in a team (or none)
-➤  #pragma omp ordered { a block of codes }
+➤ #pragma omp ordered { a block of codes }
 is another form of synchronization (in sequential order). The form
 ➤ #pragma omp critical { a block of codes } : only one thread at the time will work on next line ({} can be omiited for only one line)
 ➤ #pragma omp atomic { single assignment statement } :  same, but more efficient, only support basic operation
 
 
 ➤ #pragma omp for : instructs the compiler to distribute loop iterations within the team of threads (must be used inside a parallel region)
+
+
+This kind of constuction can avoird using if statement on tread ID :
+➤ #pragma omp parallel
+{
+  #pragma omp sections
+  {
+  #pragma omp section
+  funcA ();
+  #pragma omp section
+  funcB ();
+  #pragma omp section
+  funcC ();
+  }
+}
+
+waring at the end of sections, there's a call to an implicit barrier not as tasks. Section create a new parallel region. Tasks are thus more adapated for recursive implementation.
