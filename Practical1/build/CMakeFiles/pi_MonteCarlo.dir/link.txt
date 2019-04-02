@@ -1,1 +1,0 @@
-/usr/bin/c++   -fopenmp -std=c++11    -rdynamic CMakeFiles/pi_MonteCarlo.dir/pi_MonteCarlo.cxx.o  -o pi_MonteCarlo 
