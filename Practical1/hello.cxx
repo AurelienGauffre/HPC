@@ -18,14 +18,15 @@ int main ()
 {
   omp_set_num_threads(8);
 
-
+  int i =3 ;
   #pragma omp parallel
   {
+    std::cout << "i"<<i << std::endl;
     std::cout<<omp_get_thread_num()<<std::endl;
   }
   std::cout<<omp_get_num_threads()<<std::endl; //
   return 0;
 
 
-  
+
 }

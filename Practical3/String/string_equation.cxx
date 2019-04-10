@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include "omp.h"
 #include <chrono>
-
+#define NUM_THREADS 8
 
 int main ( );
 double f ( double x );
@@ -15,11 +15,12 @@ double g ( double x );
 void timestamp ( );
 
 int main (){
+
     // Number of dsicretisation point in time
-    # define m 100
+    # define m 200
 
     // Number of space step
-    # define n 100
+    # define n 800
 
     // Define array holding the amplitude of the string
     double u[m+1][n+1];
@@ -65,14 +66,12 @@ int main (){
     }
     u[1][n] = 0.0;
 
-    std::cout << "Coucou" << '\n';
     for (int i = 0; i<=1; i++) {
         for (int j = 0; j<n+1; j++) {
             uparal[i][j] = u[i][j];
         }
     }
-    std::cout << "Coucou2" << '\n';
-
+////////////////////////// SEQUENTIAL VERSION ////////////////////////
     auto start1 = std::chrono::high_resolution_clock::now();
     // Loop in time
     for ( int i = 2; i <= m; i++ ) {
@@ -87,12 +86,28 @@ int main (){
     }
     auto stop1 = std::chrono::high_resolution_clock::now();
     auto elapsed1 =  std::chrono::duration<double>(stop1-start1).count();
-    std::cout << elapsed1 << '\n';
+    std::cout <<"Sequential : "<< elapsed1 << '\n';
+
+
+
+////////////////////////// PARALLEL  VERSION ////////////////////////
+
+    double edges[2*NUM_THREADS];
+    int n_loc = n/NUM_THREADS;
 
     auto start2 = std::chrono::high_resolution_clock::now();
-    for ( int i = 2; i <= m; i++ ) {
-        uparal[i][0] = 0.0;
-        #pragma omp parallel for default(shared) private(j)
+
+
+        for ( int i = 2; i <= m; i++ ) {
+          uparal[i][0] = 0.0;
+        //
+        // for (size_t j = 0; j < NUM_THREADS; j++) {
+        //   edges[2*j]=uparal[i][j*m] ;
+        //   edges[2*j+1]=uparal[i][(j+1)*m-1] ;
+        // }
+        #pragma omp parallel
+        {
+        #pragma omp  for
         for ( int j = 1; j < n; j++ ) {
             uparal[i][j] =
             alpha   * (uparal[i-1][j-1] + uparal[i-1][j+1])
@@ -100,21 +115,29 @@ int main (){
             - uparal[i-2][j];
         }
         uparal[i][n] = 0.0;
+      }
     }
+
     auto stop2 = std::chrono::high_resolution_clock::now();
     auto elapsed2 =  std::chrono::duration<double>(stop2-start2).count();
-    std::cout << elapsed2 << '\n';
+    std::cout <<"Parallel :   " <<elapsed2 << '\n';
+
+
+
+
+
+
 
     // Norm
     double norm = 0;
     for (int i = 0; i< m+1; i++){
         for (int j = 0; j< n+1; j++){
-            double a = u[i,j]-uparal[i,j];
+            double a = u[i][j]-uparal[i][j];
             norm += a*a;
         }
     }
 
-std::cout << "norm : " << norm << '\n';
+std::cout << "L2 Norm difference  : " << norm << '\n';
 
 //  Write data file.
 outfile.open ( "string_data.dat" );
