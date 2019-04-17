@@ -97,26 +97,90 @@ int main (){
 
     auto start2 = std::chrono::high_resolution_clock::now();
 
+      #pragma omp parallel
+      {
+      int tid = omp_get_thread_num();
 
-        for ( int i = 2; i <= m; i++ ) {
-          uparal[i][0] = 0.0;
-        //
-        // for (size_t j = 0; j < NUM_THREADS; j++) {
-        //   edges[2*j]=uparal[i][j*m] ;
-        //   edges[2*j+1]=uparal[i][(j+1)*m-1] ;
-        // }
-        #pragma omp parallel
-        {
-        #pragma omp  for
-        for ( int j = 1; j < n; j++ ) {
-            uparal[i][j] =
-            alpha   * (uparal[i-1][j-1] + uparal[i-1][j+1])
-            + 2.0 * ( 1.0 - alpha ) * uparal[i-1][j]
-            - uparal[i-2][j];
-        }
-        uparal[i][n] = 0.0;
+      double uparal_loc_old[n_loc];
+      double uparal_loc[n_loc];
+      double uparal_loc_new[n_loc];
+
+      int j0 = tid*n_loc;
+      int j1 = j0 + n_loc - 1;
+      // Initial condition
+      for (int j = j1; j < j2; j++ ) {
+          x = j * dx;
+          uparal_loc_old[j] = f ( x );
       }
-    }
+
+      //Update edges
+      edges[2*tid]=uparal_loc_old[0];
+      edges[2*tid+1]=uparal_loc_old[n_loc-1];
+
+      edges[0] = 0.0;
+      edges[NUM_THREADS-1] = 0.0;
+
+
+      // Bootstrap for the first time step
+      for ( int j = j0+1; j < j1-1; j++ ) {
+          x = j * dx;
+          uparal_loc[j] = ( alpha / 2.0 ) * (uparal_loc_old[j-1] + uparal_loc_old[j+1])
+          + ( 1.0 - alpha ) * uparal_loc_old[j] + dt * g ( x );
+      }
+      if (tid == 0){
+        uparal_loc[j0] = 0.0;
+      } else {
+        x = j0 * dx;
+        uparal_loc[j0] = ( alpha / 2.0 ) * (edges[tid*2-1] + uparal_loc_old[j0+1])
+        + ( 1.0 - alpha ) * uparal_loc_old[j0] + dt * g ( x );
+      }
+      if (tid == NUM_THREADS){
+        uparal_loc[j1-1] = 0.0;
+      } else {
+        x = (j1-1) * dx;
+        uparal_loc[j1-1] = ( alpha / 2.0 ) * (uparal_loc_old[j1-2] + edges[tid*2+2])
+        + ( 1.0 - alpha ) * uparal_loc_old[j1-1] + dt * g ( x );
+      }
+
+      std::swap(uparal_loc,uparal_loc_new);
+      std::swap(uparal_loc_old,uparal_loc);
+
+      //Update edges
+      edges[2*tid]=uparal_loc[0];
+      edges[2*tid+1]=uparal_loc[n_loc-1];
+
+      //Loop in time
+      for ( int i = 2; i <= m; i++ ) {
+        if (tid == 0){
+          uparal_loc_new[0] = 0.0;
+        } else {
+          uparal_loc_new[0] = alpha   * (edges[2*tid-1] + uparal_loc[j+1])
+            + 2.0 * ( 1.0 - alpha ) * uparal_loc[j] - uparal_old[j];
+        }
+
+        #pragma omp  for
+        for ( int j = 1; j < n_loc-1; j++ ) {
+          uparal_loc_new[j] = alpha   * (uparal_loc[j-1] + uparal_loc[j+1])
+            + 2.0 * ( 1.0 - alpha ) * uparal_loc[j] - uparal_old[j];
+        }
+
+        if (tid == NUM_THREADS) {
+          uparal_loc_new = 0.0;
+        } else {
+          uparal_loc_new[n_loc-1] = alpha   * (uparal_loc[j-1] + edges[2*tid+2])
+            + 2.0 * ( 1.0 - alpha ) * uparal_loc[j] - uparal_old[j];
+        }
+
+        std::swap(uparal_loc,uparal_loc_new);
+        std::swap(uparal_loc_old,uparal_loc);
+
+        #pragma omp barrier
+        //Update edges
+        edges[2*tid]=uparal_loc[0];
+        edges[2*tid+1]=uparal_loc[n_loc-1];
+      }
+
+      }
 
     auto stop2 = std::chrono::high_resolution_clock::now();
     auto elapsed2 =  std::chrono::duration<double>(stop2-start2).count();
