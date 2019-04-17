@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical3/String Correction/string_equation_omp_v3.cxx
+iostream
+-
+fstream
+-
+iomanip
+-
+utility
+-
+cmath
+-
+ctime
+-
+cstdlib
+-
+omp.h
+-
+

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical3/String Correction/string_equation.cxx
+iostream
+-
+fstream
+-
+iomanip
+-
+cmath
+-
+ctime
+-
+cstdlib
+-
+

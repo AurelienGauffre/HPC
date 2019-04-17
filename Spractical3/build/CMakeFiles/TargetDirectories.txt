@@ -1,0 +1,6 @@
+/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical3/String Correction/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical3/String Correction/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical3/String Correction/build/CMakeFiles/string_omp_v1.dir
+/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical3/String Correction/build/CMakeFiles/string_seq.dir
+/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical3/String Correction/build/CMakeFiles/string_omp_v2.dir
+/mnt/c/Users/Aurélien/Desktop/ENSIMAG/HPC/Practical3/String Correction/build/CMakeFiles/string_omp_v3.dir
