@@ -15,7 +15,7 @@
 int main()
 {
   // Number of Monte Carlo tries
-  double niter = 100000000;
+  int niter = 100000000;
   // x,y coordinates from the random tries
   double x, y;
 
@@ -33,8 +33,7 @@ int main()
   std::uniform_real_distribution<> dis(0, 1);
 
   double start = omp_get_wtime();
-#pragma omp parallel for reduction(+ \
-                                   : count)
+#pragma omp parallel for reduction(+ : count)
   for (int i = 0; i <= niter; ++i)
   {
     //gets a random x and y coordinates

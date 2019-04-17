@@ -9,11 +9,12 @@
 #include <cmath>
 // Mesure time
 #include <chrono>
+#include <omp.h>
 
 int main()
 {
   // Number of integration interval
-  int num_steps = 10000;
+  int num_steps = 1000000;
   // Evaluation point
   double x;
   // Approximate value of pi
@@ -24,8 +25,7 @@ int main()
   double step = 1.0 / (double)num_steps;
 
   auto start = omp_get_wtime();
-#pragma omp parallel for reduction(sum \
-                                   : x)
+#pragma omp parallel for reduction(+:sum) private(x)
   for (int i = 1; i <= num_steps; i++)
   {
     x = (i - 0.5) * step;

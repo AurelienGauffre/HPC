@@ -17,7 +17,7 @@ int main()
     int id = omp_get_thread_num();
 #pragma omp master
     {
-      int nthreads = omp_get_num_threads(nthreads);
+      int nthreads = omp_get_num_threads();
     }
     std::cout << "Hello World from thread = " << id;
     std::cout << " with " << nthreads << " threads" << std::endl;
